@@ -90,9 +90,9 @@ func main() {
 	if err := mirror.SmartMirror(&rawMap, &parentOrganism); err != nil {
 		log.Fatalln(err.Error())
 	}
-	log.Println("Raw Map : ", rawMap)
+	fmt.Println("Raw Map : ", rawMap)
 	//OUTPUT : Raw Map :  map[Age:2 Child:map[Age:1 Name:X-DORU Species:404] Name:Doruru Species:Digital Or Unknown]
 	//Lets see our final result
-	log.Println("New Organism : ", parentOrganism)
-	//OUTPUT : {Doruru 2 Digital Or Unknown {X-DORU 1 404}}
+	fmt.Println("New Organism : ", parentOrganism)
+	//OUTPUT : New Organism :  {Doruru 2 Digital Or Unknown {X-DORU 1 404}}
 }
