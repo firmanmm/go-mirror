@@ -41,7 +41,7 @@ func _RecursiveMirror(source, dest reflect.Value, bestEffort bool) error {
 		return _HandleFloat(source, dest, sourceKind, destKind, bestEffort)
 	case reflect.String:
 		return _HandleString(source, dest, sourceKind, destKind, bestEffort)
-	case sourceKind:
+	case sourceKind, reflect.Interface:
 		dest.Set(source)
 	default:
 		if !bestEffort {

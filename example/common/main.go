@@ -1,14 +1,3 @@
-# Go Mirror
-![Golang Mirror](image/SpidermanPoint.jpg)
-
-## Preface
-Well I need some way to copy data between struct without having to assign it one by one. One solution that i found is by encoding it to json then decode it in the target struct. But I think it's a hacky solution. Also, I need to convert arbitrary data to other data type but I seems can't find one. I already tried searching the internet for non hacky solution but seems unable to find one. So I decided to create one by myself. 
-
-## What this thing do
-Convert different struct to another struct or map or vice versa. It utilize reflection to achieve it's target
-
-## Usage
-```golang
 package main
 
 import (
@@ -107,10 +96,3 @@ func main() {
 	log.Println("New Organism : ", parentOrganism)
 	//OUTPUT : {Doruru 2 Digital Or Unknown {X-DORU 1 404}}
 }
-```
-## Todo
-- Create more Example
-- Add support to pointer
-- Convert switch to jump table
-- More Test
-- Benchmark
