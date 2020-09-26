@@ -122,7 +122,7 @@ BenchmarkSmartMirror-8   	  925382	      1310 ns/op	     192 B/op	      15 alloc
 PASS
 ok  	github.com/firmanmm/go-mirror	5.266s
 ```
-Eventhough this package do perform faster the `hacky` methods, it doesn't have much support than them. One of the downside of this library is that it currently doesn't support using pointer.
+Eventhough this package do perform faster than the `hacky` methods, it doesn't have much support than them. One of the downside of this library is that it currently doesn't support using pointer.
 ## Todo
 - Create more Example
 - Add support to pointer
