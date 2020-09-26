@@ -90,3 +90,24 @@ func BenchmarkMirror(b *testing.B) {
 		}
 	}
 }
+
+func BenchmarkSmartMirror(b *testing.B) {
+	source := ParentOrganism{
+		Name:    "Rendoru",
+		Age:     22,
+		Species: "Human",
+		Child: Organism{
+			Name:    "Doru",
+			Age:     1,
+			Species: "Digital Or Unknown",
+		},
+	}
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		dest := ParentOrganism{}
+		err := SmartMirror(&source, &dest)
+		if err != nil {
+			b.Error(err.Error())
+		}
+	}
+}
