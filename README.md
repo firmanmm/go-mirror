@@ -108,6 +108,20 @@ func main() {
 	//OUTPUT : New Organism :  {Doruru 2 Digital Or Unknown {X-DORU 1 404}}
 }
 ```
+
+## Benchmark
+Let's see the performance result
+```
+goos: windows
+goarch: amd64
+pkg: github.com/firmanmm/go-mirror
+BenchmarkJson-8       	  300813	      3919 ns/op	     496 B/op	      12 allocs/op
+BenchmarkJsoniter-8   	  632120	      1891 ns/op	     296 B/op	      14 allocs/op
+BenchmarkMirror-8     	  957968	      1312 ns/op	     192 B/op	      15 allocs/op
+PASS
+ok  	github.com/firmanmm/go-mirror	4.142s
+```
+
 ## Todo
 - Create more Example
 - Add support to pointer
