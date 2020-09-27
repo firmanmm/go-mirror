@@ -140,7 +140,7 @@ BenchmarkSmartMirrorStructToMapThenToOtherStruct-8   	   51853	     23257 ns/op	
 PASS
 ok  	github.com/firmanmm/go-mirror	28.529s
 ```
-Eventhough this package do perform faster than the `hacky` methods, it doesn't have much support than them. One of the downside of this library is that it currently doesn't support using pointer.
+Eventhough this package do perform faster than the `hacky` methods on certain scenario, it doesn't duplicate the data by default. So if you are looking for duplication, please find other package.
 ## Todo
 - Create more Example
 - Improve conversion from map to struct
