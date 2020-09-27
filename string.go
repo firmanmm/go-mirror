@@ -19,9 +19,6 @@ func _HandleString(source, dest reflect.Value, sourceKind, destKind reflect.Kind
 		case reflect.Int, reflect.Uint, reflect.Float32, reflect.Float64, reflect.Bool:
 			dest.SetString(fmt.Sprint(source.Interface()))
 		default:
-			if bestEffort {
-				return nil
-			}
 			return errors.New("Destination field type didn't match Source field type")
 		}
 	}

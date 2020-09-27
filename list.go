@@ -18,9 +18,6 @@ func _HandleList(source, dest reflect.Value, sourceKind, destKind reflect.Kind, 
 			}
 			return err
 		}
-		if value.IsZero() {
-			continue
-		}
 		dest.Set(reflect.Append(dest, value))
 	}
 	return nil

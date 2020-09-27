@@ -40,9 +40,6 @@ func _HandleMapToMap(source, dest reflect.Value, bestEffort bool) error {
 			}
 			return err
 		}
-		if value.IsZero() {
-			continue
-		}
 		dest.SetMapIndex(key, value)
 	}
 	return nil
@@ -63,9 +60,6 @@ func _HandleStructToMap(source, dest reflect.Value, bestEffort bool) error {
 		key := reflect.New(destKey).Elem()
 		value := reflect.New(destValue).Elem()
 		if err := _RecursiveMirror(reflect.ValueOf(sourceName), key, bestEffort); err != nil {
-			if bestEffort {
-				continue
-			}
 			return err
 		}
 		if key.IsZero() {
@@ -76,9 +70,6 @@ func _HandleStructToMap(source, dest reflect.Value, bestEffort bool) error {
 				continue
 			}
 			return err
-		}
-		if value.IsZero() {
-			continue
 		}
 		dest.SetMapIndex(key, value)
 

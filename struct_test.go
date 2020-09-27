@@ -81,7 +81,7 @@ func TestStructToStructPointerChild(t *testing.T) {
 		HasError    bool
 	}{
 		{
-			"StructToStructPointerChild",
+			"Normal",
 			StructWithPointerChild{
 				"Rendoru",
 				22,
@@ -94,7 +94,7 @@ func TestStructToStructPointerChild(t *testing.T) {
 			false,
 		},
 		{
-			"StructToStructNilPointerChild",
+			"Nil",
 			StructWithPointerChild{
 				"Rendoru",
 				22,
