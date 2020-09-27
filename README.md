@@ -99,7 +99,6 @@ func main() {
 		//OUTPUT : Destination field type didn't match Source field type
 	}
 	//Now let's use SmartMirror, It behaves like mirror but perform transformation as needed
-	//Also, it won't stop on error
 	if err := mirror.SmartMirror(&rawMap, &parentOrganism); err != nil {
 		log.Fatalln(err.Error())
 	}
