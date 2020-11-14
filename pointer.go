@@ -15,6 +15,9 @@ func _HandlePointer(source, dest reflect.Value, sourceKind, destKind reflect.Kin
 	if sourceKind == reflect.Ptr {
 		source = source.Elem()
 	}
+	if destKind == reflect.Ptr {
+		dest = dest.Elem()
+	}
 	newDest := reflect.New(dest.Type())
 	dest.Set(newDest.Elem())
 	return _RecursiveMirror(source, dest, bestEffort)

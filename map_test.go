@@ -2,6 +2,8 @@ package mirror
 
 import (
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestSameTypeMapToMap(t *testing.T) {
@@ -189,5 +191,29 @@ func TestStructToMap(t *testing.T) {
 			t.Errorf("Expected %v got %v", 1234, destination["RandomFloat"])
 		}
 	})
+
+}
+
+func TestMapToStruct(t *testing.T) {
+
+	type Destination struct {
+		A string
+		B string
+		C string
+	}
+
+	source := map[string]interface{}{
+		"A": "aaaaa",
+		"B": 12345,
+		"C": "ca123",
+	}
+
+	dest := &Destination{}
+	if err := SmartMirror(&source, &dest); err != nil {
+		t.Error(err)
+	}
+	assert.Equal(t, "aaaaa", dest.A)
+	assert.Equal(t, "12345", dest.B)
+	assert.Equal(t, "ca123", dest.C)
 
 }
