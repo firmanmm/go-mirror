@@ -39,16 +39,22 @@ func _RecursiveMirror(source, dest reflect.Value, bestEffort bool) error {
 	destKind := dest.Kind()
 	sourceKind := source.Kind()
 
-	if !dest.CanSet() {
-		return nil
-	}
-
 	switch sourceKind {
-	case reflect.Ptr, reflect.Slice, reflect.Map:
+	case reflect.Slice, reflect.Map:
 		if source.IsNil() {
 			return nil
 		}
+	case reflect.Ptr:
+		if source.IsNil() {
+			return nil
+		}
+		source = source.Elem()
+		return _RecursiveMirror(source, dest, bestEffort)
 	default:
+	}
+
+	if !dest.CanSet() {
+		return nil
 	}
 
 	sourceType := source.Type()

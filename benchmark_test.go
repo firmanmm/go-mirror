@@ -117,9 +117,7 @@ func TestMirrorStructToOtherType(t *testing.T) {
 		t.Error(err)
 	}
 	//Since the structure is different deep equal will fail
-	if fmt.Sprint(source) != fmt.Sprint(dest) {
-		t.Errorf("Expected \n%v \ngot \n%v", source, dest)
-	}
+	assert.EqualValues(t, source, dest)
 }
 func BenchmarkJsonStructToSameType(b *testing.B) {
 	source := _GetSource()

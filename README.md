@@ -116,28 +116,28 @@ Let's see the performance result
 goos: windows
 goarch: amd64
 pkg: github.com/firmanmm/go-mirror
-BenchmarkJsonStructToSameType-8                      	  139908	      8438 ns/op	     992 B/op	      18 allocs/op
-BenchmarkJsoniterStructToSameType-8                  	  261585	      4708 ns/op	    1048 B/op	      29 allocs/op
-BenchmarkMirrorStructToSameType-8                    	 8531840	       143 ns/op	     128 B/op	       1 allocs/op
-BenchmarkSmartMirrorStructToSameType-8               	 8414037	       141 ns/op	     128 B/op	       1 allocs/op
-BenchmarkJsonStructToOtherType-8                     	  136719	      8580 ns/op	     992 B/op	      18 allocs/op
-BenchmarkJsoniterStructToOtherType-8                 	  261567	      4685 ns/op	    1048 B/op	      29 allocs/op
-BenchmarkMirrorStructToOtherType-8                   	  668490	      1800 ns/op	     272 B/op	      19 allocs/op
-BenchmarkSmartMirrorStructToOtherType-8              	  707763	      1799 ns/op	     272 B/op	      19 allocs/op
-BenchmarkJsonStructToMap-8                           	   93576	     12987 ns/op	    3210 B/op	      75 allocs/op
-BenchmarkJsoniterStructToMap-8                       	  156141	      7889 ns/op	    2819 B/op	      68 allocs/op
-BenchmarkMirrorStructToMap-8                         	  210951	      5662 ns/op	    1569 B/op	      48 allocs/op
-BenchmarkSmartMirrorStructToMap-8                    	  211096	      5661 ns/op	    1569 B/op	      48 allocs/op
-BenchmarkJsonMapToStruct-8                           	   71194	     16705 ns/op	    3073 B/op	      65 allocs/op
-BenchmarkJsoniterMapToStruct-8                       	  169464	      7006 ns/op	    1348 B/op	      36 allocs/op
-BenchmarkMirrorMapToStruct-8                         	   70374	     17193 ns/op	    2784 B/op	     169 allocs/op
-BenchmarkSmartMirrorMapToStruct-8                    	   69781	     17153 ns/op	    2784 B/op	     169 allocs/op
-BenchmarkJsonStructToMapThenToOtherStruct-8          	   38355	     30726 ns/op	    6284 B/op	     140 allocs/op
-BenchmarkJsoniterStructToMapThenToOtherStruct-8      	   78640	     15511 ns/op	    4174 B/op	     104 allocs/op
-BenchmarkMirrorStructToMapThenToOtherStruct-8        	   52084	     23194 ns/op	    4353 B/op	     217 allocs/op
-BenchmarkSmartMirrorStructToMapThenToOtherStruct-8   	   51853	     23257 ns/op	    4353 B/op	     217 allocs/op
+BenchmarkJsonStructToSameType-8                      	  133640	      9151 ns/op	     992 B/op	      18 allocs/op
+BenchmarkJsoniterStructToSameType-8                  	  256162	      4827 ns/op	    1048 B/op	      29 allocs/op
+BenchmarkMirrorStructToSameType-8                    	 8142504	       152 ns/op	     128 B/op	       1 allocs/op
+BenchmarkSmartMirrorStructToSameType-8               	 8034150	       154 ns/op	     128 B/op	       1 allocs/op
+BenchmarkJsonStructToOtherType-8                     	  139759	      8862 ns/op	     992 B/op	      18 allocs/op
+BenchmarkJsoniterStructToOtherType-8                 	  267295	      4838 ns/op	    1048 B/op	      29 allocs/op
+BenchmarkMirrorStructToOtherType-8                   	  584518	      2207 ns/op	     320 B/op	      20 allocs/op
+BenchmarkSmartMirrorStructToOtherType-8              	  533973	      2208 ns/op	     320 B/op	      20 allocs/op
+BenchmarkJsonStructToMap-8                           	   81439	     14154 ns/op	    3210 B/op	      75 allocs/op
+BenchmarkJsoniterStructToMap-8                       	  149857	      8493 ns/op	    2819 B/op	      68 allocs/op
+BenchmarkMirrorStructToMap-8                         	  201561	      5995 ns/op	    1617 B/op	      49 allocs/op
+BenchmarkSmartMirrorStructToMap-8                    	  195078	      6079 ns/op	    1617 B/op	      49 allocs/op
+BenchmarkJsonMapToStruct-8                           	   69858	     21069 ns/op	    3073 B/op	      65 allocs/op
+BenchmarkJsoniterMapToStruct-8                       	  161488	      7295 ns/op	    1348 B/op	      36 allocs/op
+BenchmarkMirrorMapToStruct-8                         	   56398	     19227 ns/op	    2832 B/op	     170 allocs/op
+BenchmarkSmartMirrorMapToStruct-8                    	   60858	     18411 ns/op	    2832 B/op	     170 allocs/op
+BenchmarkJsonStructToMapThenToOtherStruct-8          	   35740	     34084 ns/op	    6284 B/op	     140 allocs/op
+BenchmarkJsoniterStructToMapThenToOtherStruct-8      	   75412	     15802 ns/op	    4174 B/op	     104 allocs/op
+BenchmarkMirrorStructToMapThenToOtherStruct-8        	   44391	     24779 ns/op	    4449 B/op	     219 allocs/op
+BenchmarkSmartMirrorStructToMapThenToOtherStruct-8   	   49772	     25747 ns/op	    4449 B/op	     219 allocs/op
 PASS
-ok  	github.com/firmanmm/go-mirror	28.529s
+ok  	github.com/firmanmm/go-mirror	29.776s
 ```
 Eventhough this package do perform faster than the `hacky` methods on certain scenario, it doesn't duplicate the data by default. So if you are looking for duplication, please find other package.
 ## Todo

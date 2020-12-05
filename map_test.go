@@ -217,3 +217,27 @@ func TestMapToStruct(t *testing.T) {
 	assert.Equal(t, "ca123", dest.C)
 
 }
+
+func TestStructPointerToMap(t *testing.T) {
+
+	type Source struct {
+		A string
+		B string
+		C string
+	}
+
+	dest := map[string]interface{}{}
+
+	source := &Source{
+		A: "AAAA",
+		B: "BBBB",
+		C: "CCCC",
+	}
+	if err := Mirror(&source, &dest); err != nil {
+		t.Error(err)
+	}
+	assert.Equal(t, source.A, dest["A"])
+	assert.Equal(t, source.B, dest["B"])
+	assert.Equal(t, source.C, dest["C"])
+
+}
