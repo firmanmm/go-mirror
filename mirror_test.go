@@ -26,6 +26,28 @@ func _PerformTest(name string, source, destination interface{}, hasError bool, t
 	})
 }
 
+func _PerformTestSmart(name string, source, destination interface{}, expect interface{}, hasError bool, t *testing.T) {
+	t.Run(name, func(t *testing.T) {
+		err := SmartMirror(source, destination)
+		if err != nil {
+			if !hasError {
+				t.Errorf("Got an error %s", err.Error())
+			} else {
+				return
+			}
+		} else if err == nil && hasError {
+			t.Error("Expecting error but got nothing")
+		}
+
+		source = reflect.ValueOf(source).Elem().Interface()
+		destination = reflect.ValueOf(destination).Elem().Interface()
+		expect = reflect.ValueOf(expect).Elem().Interface()
+		if !reflect.DeepEqual(expect, destination) {
+			t.Errorf("Expected %v but got %v", expect, destination)
+		}
+	})
+}
+
 func TestPrimitive(t *testing.T) {
 
 	inInt := -100
