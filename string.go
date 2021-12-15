@@ -15,7 +15,7 @@ func _HandleString(source, dest reflect.Value, sourceKind, destKind reflect.Kind
 	} else {
 		switch sourceKind {
 		case reflect.String:
-			dest.Set(source)
+			dest.Set(source.Convert(dest.Type()))
 		case reflect.Int, reflect.Uint, reflect.Float32, reflect.Float64, reflect.Bool:
 			dest.SetString(fmt.Sprint(source.Interface()))
 		default:
