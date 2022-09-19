@@ -19,7 +19,15 @@ type StructWithPointerChild struct {
 	Child *PrimitiveStruct
 }
 
-func TestPrimitiveStuctToStruct(t *testing.T) {
+type StructWithInterface struct {
+	SomeAbstract interface{}
+}
+
+type StructWithInterfacePtr struct {
+	SomeAbstract *interface{}
+}
+
+func TestPrimitiveStructToStruct(t *testing.T) {
 
 	testData := []struct {
 		Name        string
@@ -40,6 +48,57 @@ func TestPrimitiveStuctToStruct(t *testing.T) {
 
 	for _, val := range testData {
 		_PerformTest(val.Name, &val.Source, &val.Destination, val.HasError, t)
+	}
+}
+
+func TestPrimitiveStructToStructWithInterface(t *testing.T) {
+
+	testData := []struct {
+		Name        string
+		Source      StructWithInterface
+		Destination StructWithInterfacePtr
+		HasError    bool
+		IsSmart     bool
+	}{
+		{
+			"StructToStructWithEmptyInterface",
+			StructWithInterface{
+				SomeAbstract: nil,
+			},
+			StructWithInterfacePtr{},
+			false,
+			true,
+		},
+		{
+			"StructToStructWithEmptyInterfaceShould without convert return err ",
+			StructWithInterface{
+				SomeAbstract: nil,
+			},
+			StructWithInterfacePtr{},
+			true,
+			false,
+		},
+	}
+
+	for _, val := range testData {
+		t.Run(val.Name, func(t *testing.T) {
+			var err error
+			if val.IsSmart {
+				err = SmartMirror(&val.Source, &val.Destination)
+			} else {
+				err = Mirror(&val.Source, &val.Destination)
+			}
+
+			if err != nil {
+				if !val.HasError {
+					t.Errorf("Got an error %s", err.Error())
+				} else {
+					return
+				}
+			} else if err == nil && val.HasError {
+				t.Error("Expecting error but got nothing")
+			}
+		})
 	}
 }
 

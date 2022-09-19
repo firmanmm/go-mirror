@@ -40,6 +40,11 @@ func _RecursiveMirror(source, dest reflect.Value, bestEffort bool) error {
 	sourceKind := source.Kind()
 
 	switch sourceKind {
+	case reflect.Invalid:
+		if bestEffort {
+			return nil
+		}
+		return errors.New("Destination field type didn't match Source field type")
 	case reflect.Slice, reflect.Map:
 		if source.IsNil() {
 			return nil
@@ -65,8 +70,7 @@ func _RecursiveMirror(source, dest reflect.Value, bestEffort bool) error {
 	}
 
 	if sourceKind == reflect.Interface {
-		source = source.Elem()
-		sourceKind = source.Kind()
+		return _RecursiveMirror(source.Elem(), dest, bestEffort)
 	}
 
 	if handler, ok := jumpTableRecursiveMirror[destKind]; ok {
